@@ -1,0 +1,2508 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Johnson_UltBpmModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="T_AssignedToUserFuture">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DelStatus" Type="int" Nullable="false" />
+          <Property Name="OriginalAssignedToUser" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="TargetAssignedToUser" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="StartTime" Type="datetime" Nullable="false" />
+          <Property Name="EndTime" Type="datetime" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="3000" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“Johnson_UltBpm.dbo.T_Attachment”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="T_Attachment">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="CreateDate" />
+            <PropertyRef Name="CreateUserCode" />
+            <PropertyRef Name="ModifyDate" />
+            <PropertyRef Name="ModifyUserCode" />
+            <PropertyRef Name="DelStatus" />
+            <PropertyRef Name="ProcessId" />
+            <PropertyRef Name="StepLabel" />
+            <PropertyRef Name="EdocFileId" />
+            <PropertyRef Name="EdocFolderId" />
+            <PropertyRef Name="FileName" />
+            <PropertyRef Name="FileExtName" />
+            <PropertyRef Name="FileType" />
+            <PropertyRef Name="ExtendA" />
+            <PropertyRef Name="ExtendB" />
+            <PropertyRef Name="ExtendC" />
+            <PropertyRef Name="ExtendD" />
+            <PropertyRef Name="ExtendE" />
+            <PropertyRef Name="Notes" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DelStatus" Type="int" Nullable="false" />
+          <Property Name="ProcessId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="StepLabel" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="EdocFileId" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="EdocFolderId" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="FileName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="FileExtName" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="FileType" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ExtendA" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ExtendB" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ExtendC" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ExtendD" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ExtendE" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="3000" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“Johnson_UltBpm.dbo.T_Countersign”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="T_Countersign">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="CreateDate" />
+            <PropertyRef Name="CreateUserCode" />
+            <PropertyRef Name="ProcessId" />
+            <PropertyRef Name="SignKey" />
+            <PropertyRef Name="FirstSignUserCount" />
+            <PropertyRef Name="FirstSignOpinion" />
+            <PropertyRef Name="SignUserCount" />
+            <PropertyRef Name="SignOpinion" />
+            <PropertyRef Name="Notes" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProcessId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SignKey" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="FirstSignUserCount" Type="int" Nullable="false" />
+          <Property Name="FirstSignOpinion" Type="int" Nullable="false" />
+          <Property Name="SignUserCount" Type="int" Nullable="false" />
+          <Property Name="SignOpinion" Type="int" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="3000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_Dic_Parameter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyUserCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DelStatus" Type="int" Nullable="false" />
+          <Property Name="ParamName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ParentId" Type="int" Nullable="false" />
+          <Property Name="ParamTypeCode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="3000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_GZOrderProcessConfig">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DelStatus" Type="int" Nullable="false" />
+          <Property Name="ProductType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Design_UserCode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MPD_UserCode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Check_UserCode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Review_UserCode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PUR_UserCode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Issue_UserCode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="BOM_UserCode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Implement_UserCode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Implement1_UserCode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Implement2_UserCode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Implement3_UserCode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Implement4_UserCode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Spare1" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Spare2" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Process_UserCode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Quality_UserCode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Purchasing_UserCode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Electrical_UserCode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ETD_UserCode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Director_UserCode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PMC_UserCode" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6013: 表/视图“Johnson_UltBpm.dbo.T_GZOrderProcessConfig_excel”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
+        <EntityType Name="T_GZOrderProcessConfig_excel">
+          <Property Name="Product_Type" Type="nvarchar" MaxLength="255" />
+          <Property Name="Design_UserCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="Director_UserCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="Electrical_UserCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="Purchasing_UserCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="Quality_UserCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="Process_UserCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="ETD_UserCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="MPD_UserCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="Start_UserCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="Check_UserCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="Review_UserCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="PUR_UserCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="PMC_UserCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="BOM_UserCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="Issue_UserCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="Implement1_UserCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="Implement2_UserCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="Implement3_UserCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="Implement4_UserCode" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+        <!--生成过程中发现错误:
+警告 6013: 表/视图“Johnson_UltBpm.dbo.T_GZOrderProcessConfig_ImportData”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
+        <EntityType Name="T_GZOrderProcessConfig_ImportData">
+          <Property Name="Product_Type" Type="nvarchar" MaxLength="255" />
+          <Property Name="Design_UserCode" Type="nvarchar(max)" />
+          <Property Name="Director_UserCode" Type="nvarchar(max)" />
+          <Property Name="Electrical_UserCode" Type="nvarchar(max)" />
+          <Property Name="Purchasing_UserCode" Type="nvarchar(max)" />
+          <Property Name="Quality_UserCode" Type="nvarchar(max)" />
+          <Property Name="Process_UserCode" Type="nvarchar(max)" />
+          <Property Name="ETD_UserCode" Type="nvarchar(max)" />
+          <Property Name="MPD_UserCode" Type="nvarchar(max)" />
+          <Property Name="Start_UserCode" Type="nvarchar(max)" />
+          <Property Name="Check_UserCode" Type="nvarchar(max)" />
+          <Property Name="Review_UserCode" Type="nvarchar(max)" />
+          <Property Name="PUR_UserCode" Type="nvarchar(max)" />
+          <Property Name="BOM_UserCode" Type="nvarchar(max)" />
+          <Property Name="PMC_UserCode" Type="nvarchar(max)" />
+          <Property Name="Issue_UserCode" Type="nvarchar(max)" />
+          <Property Name="Implement1_UserCode" Type="nvarchar(max)" />
+          <Property Name="Implement2_UserCode" Type="nvarchar(max)" />
+          <Property Name="Implement3_UserCode" Type="nvarchar(max)" />
+          <Property Name="Implement4_UserCode" Type="nvarchar(max)" />
+        </EntityType>-->
+        <EntityType Name="T_GZOrderRelease">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DelStatus" Type="int" Nullable="false" />
+          <Property Name="ProcessId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ApplicantId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProductType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IssuingType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="OrderType" Type="int" Nullable="false" />
+          <Property Name="OrderVersion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Check_UserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Review_UserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsNewMaterial" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsProcessorQuality" Type="int" Nullable="false" />
+          <Property Name="ProjectTitle" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SONO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="JDSNO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DeliveryDate" Type="datetime" Nullable="false" />
+          <Property Name="DrawingRecognition" Type="int" Nullable="false" />
+          <Property Name="IsSecondBOM" Type="int" Nullable="false" />
+          <Property Name="Office" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="OfficeContacts" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="3000" Nullable="false" />
+          <Property Name="BOMDate" Type="datetime" Nullable="false" />
+          <Property Name="BOMFinish" Type="int" Nullable="false" />
+          <Property Name="BOM_UserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Issue_UserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Implement1_UserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ImplementFinish1" Type="int" Nullable="false" />
+          <Property Name="Implement2_UserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ImplementFinish2" Type="int" Nullable="false" />
+          <Property Name="Implement3_UserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ImplementFinish3" Type="int" Nullable="false" />
+          <Property Name="Implement4_UserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ImplementFinish4" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_GZOrderReleaseAttachment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DelStatus" Type="int" Nullable="false" />
+          <Property Name="ProcessId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="StepLabel" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="EdocFileId" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="EdocFolderId" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="FileName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="FileExtName" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="FileType" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="FileNum" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="FileDescribe" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="SAP" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Version" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="EffectiveDate" Type="datetime" Nullable="false" />
+          <Property Name="Property" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="IssuingDept" Type="varchar(max)" Nullable="false" />
+          <Property Name="Notes" Type="varchar(max)" Nullable="false" />
+          <Property Name="ExtendA" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_GZOrderReleaseProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DelStatus" Type="int" Nullable="false" />
+          <Property Name="ProcessId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Item" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Material" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MaterialNum" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Requirement" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Remark" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="DeliveryDate" Type="datetime" Nullable="false" />
+          <Property Name="CrewFinishDate" Type="datetime" Nullable="false" />
+          <Property Name="Implement" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_GZOrderReview">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DelStatus" Type="int" Nullable="false" />
+          <Property Name="ProcessId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ApplicantId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProductType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IssuingType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="OrderType" Type="int" Nullable="false" />
+          <Property Name="IsReview" Type="int" Nullable="false" />
+          <Property Name="BOM_UserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BOM_RealName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NewPurchasing_UserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NewPurchasing_RealName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Assignment_UserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Assignment_RealName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProjectTitle" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SONO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="JDSNO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DeliveryDate" Type="datetime" Nullable="false" />
+          <Property Name="DrawingRecognition" Type="int" Nullable="false" />
+          <Property Name="IsSecondBOM" Type="int" Nullable="false" />
+          <Property Name="Office" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="OfficeContacts" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="OrderVersion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="3000" Nullable="false" />
+          <Property Name="IsNewMaterial" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DesignFinishDate" Type="datetime" Nullable="false" />
+          <Property Name="Process_UserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Process_RealName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProcessFinishDate" Type="datetime" Nullable="false" />
+          <Property Name="Quality_UserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Quality_RealName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="QualityFinishDate" Type="datetime" Nullable="false" />
+          <Property Name="Purchasing_UserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Purchasing_RealName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PurchasingFinishDate" Type="datetime" Nullable="false" />
+          <Property Name="Electrical_UserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Electrical_RealName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ElectricalFinishDate" Type="datetime" Nullable="false" />
+          <Property Name="ETD_UserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ETD_RealName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ETDFinishDate" Type="datetime" Nullable="false" />
+          <Property Name="Director_UserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Director_RealName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DirectorFinishDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_GZOrderReviewProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DelStatus" Type="int" Nullable="false" />
+          <Property Name="ProcessId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Item" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Material" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MaterialNum" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Requirement" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Remark" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="DeliveryDate" Type="datetime" Nullable="false" />
+          <Property Name="CrewFinishDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_LogAssignedToUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DelStatus" Type="int" Nullable="false" />
+          <Property Name="ProcessName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Incident" Type="int" Nullable="false" />
+          <Property Name="StepLabel" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="TaskId" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="OriginalAssignedToUser" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="TargetAssignedToUser" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="AssignedType" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="StartTime" Type="datetime" Nullable="false" />
+          <Property Name="EndTime" Type="datetime" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="3000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_LogMail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DelStatus" Type="int" Nullable="false" />
+          <Property Name="ProcessId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TaskId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="StepLabel" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Subject" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="MailTo" Type="varchar" MaxLength="2000" Nullable="false" />
+          <Property Name="MailCc" Type="varchar" MaxLength="2000" Nullable="false" />
+          <Property Name="MailBcc" Type="varchar" MaxLength="2000" Nullable="false" />
+          <Property Name="Body" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="QStartTime" Type="datetime" Nullable="false" />
+          <Property Name="QEndTime" Type="datetime" Nullable="false" />
+          <Property Name="MailSendStatus" Type="int" Nullable="false" />
+          <Property Name="MailSendTime" Type="datetime" Nullable="false" />
+          <Property Name="LastReminderTime" Type="datetime" Nullable="false" />
+          <Property Name="MailSendCycle" Type="int" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="3000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_MailBodyTemplate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DelStatus" Type="int" Nullable="false" />
+          <Property Name="ProcessId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Subject" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="MailTo" Type="varchar" MaxLength="2000" Nullable="false" />
+          <Property Name="MailCc" Type="varchar" MaxLength="2000" Nullable="false" />
+          <Property Name="MailBcc" Type="varchar" MaxLength="2000" Nullable="false" />
+          <Property Name="Body" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="StepLabel" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="3000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_MailProcessConfig">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="ProcessName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="StepLabel" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsMailOpinion" Type="int" Nullable="false" />
+          <Property Name="MailSendCycle" Type="int" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="3000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_MailTasks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DelStatus" Type="int" Nullable="false" />
+          <Property Name="ProcessId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TaskId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="StepLabel" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Subject" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="MailTo" Type="varchar" MaxLength="2000" Nullable="false" />
+          <Property Name="MailCc" Type="varchar" MaxLength="2000" Nullable="false" />
+          <Property Name="MailBcc" Type="varchar" MaxLength="2000" Nullable="false" />
+          <Property Name="Body" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MailSendStatus" Type="int" Nullable="false" />
+          <Property Name="MailSendTime" Type="datetime" Nullable="false" />
+          <Property Name="LastReminderTime" Type="datetime" Nullable="false" />
+          <Property Name="MailSendCycle" Type="int" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="3000" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“Johnson_UltBpm.dbo.T_Process”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="T_Process">
+          <Key>
+            <PropertyRef Name="ProcessId" />
+            <PropertyRef Name="CreateDate" />
+            <PropertyRef Name="CreateUserCode" />
+            <PropertyRef Name="ModifyDate" />
+            <PropertyRef Name="ModifyUserCode" />
+            <PropertyRef Name="DelStatus" />
+            <PropertyRef Name="ProcessName" />
+            <PropertyRef Name="Incident" />
+            <PropertyRef Name="Summary" />
+            <PropertyRef Name="ProcessParentId" />
+            <PropertyRef Name="ProcessStatus" />
+            <PropertyRef Name="Notes" />
+          </Key>
+          <Property Name="ProcessId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DelStatus" Type="int" Nullable="false" />
+          <Property Name="ProcessName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Incident" Type="int" Nullable="false" />
+          <Property Name="Summary" Type="nvarchar" MaxLength="3000" Nullable="false" />
+          <Property Name="ProcessParentId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProcessStatus" Type="int" Nullable="false" />
+          <Property Name="SaveTime" Type="datetime" />
+          <Property Name="SendTime" Type="datetime" />
+          <Property Name="EndTime" Type="datetime" />
+          <Property Name="AbortTime" Type="datetime" />
+          <Property Name="IncidentTime" Type="datetime" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="3000" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“Johnson_UltBpm.dbo.T_ProcessCategory”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="T_ProcessCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="CreateDate" />
+            <PropertyRef Name="CreateUserCode" />
+            <PropertyRef Name="ModifyDate" />
+            <PropertyRef Name="ModifyUserCode" />
+            <PropertyRef Name="DelStatus" />
+            <PropertyRef Name="ProcessName" />
+            <PropertyRef Name="FormUrl" />
+            <PropertyRef Name="FormType" />
+            <PropertyRef Name="Notes" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DelStatus" Type="int" Nullable="false" />
+          <Property Name="ProcessName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="FormUrl" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="FormType" Type="int" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="3000" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“Johnson_UltBpm.dbo.T_ProcessDbTables”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="T_ProcessDbTables">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="CreateDate" />
+            <PropertyRef Name="CreateUserCode" />
+            <PropertyRef Name="ModifyDate" />
+            <PropertyRef Name="ModifyUserCode" />
+            <PropertyRef Name="DelStatus" />
+            <PropertyRef Name="ProcessCategoryId" />
+            <PropertyRef Name="TableName" />
+            <PropertyRef Name="Condition" />
+            <PropertyRef Name="Sort" />
+            <PropertyRef Name="Notes" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DelStatus" Type="int" Nullable="false" />
+          <Property Name="ProcessCategoryId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TableName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Condition" Type="varchar" MaxLength="3000" Nullable="false" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="3000" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“Johnson_UltBpm.dbo.T_ProcessFavorites”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="T_ProcessFavorites">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="CreateDate" />
+            <PropertyRef Name="CreateUserCode" />
+            <PropertyRef Name="ModifyDate" />
+            <PropertyRef Name="ModifyUserCode" />
+            <PropertyRef Name="DelStatus" />
+            <PropertyRef Name="ProcessName" />
+            <PropertyRef Name="Notes" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DelStatus" Type="int" Nullable="false" />
+          <Property Name="ProcessName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="3000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_SQInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DelStatus" Type="int" Nullable="false" />
+          <Property Name="ProcessId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProjectName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="SQNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SQFrom" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="SaleOffice" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="SQUnFrom" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="SQDate" Type="datetime" Nullable="false" />
+          <Property Name="ChillerType" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="UnitModel" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Quantity" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="SQFor" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="AppType" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="EnquiryFrom" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="QuoteBy" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Undesigntime" Type="int" Nullable="false" />
+          <Property Name="Purchastingtime" Type="int" Nullable="false" />
+          <Property Name="LeadtimeInfo" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Globalcode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Versions" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_SQPrice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DelStatus" Type="int" Nullable="false" />
+          <Property Name="ProcessId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PN" Type="nvarchar" MaxLength="30" />
+          <Property Name="SQUnDescr" Type="nvarchar" MaxLength="200" />
+          <Property Name="SQSDescr" Type="nvarchar" MaxLength="200" />
+          <Property Name="SQLevel1" Type="nvarchar" MaxLength="50" />
+          <Property Name="SQLevel2" Type="nvarchar" MaxLength="50" />
+          <Property Name="SQLevel3" Type="nvarchar" MaxLength="50" />
+          <Property Name="SQLevel4" Type="nvarchar" MaxLength="50" />
+          <Property Name="SepMaterial" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="StdMaterial" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="LOADD" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="EngFee" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="typea" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="typeb" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="totleMLO" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="TotalFiceBT" Type="nvarchar" MaxLength="200" />
+          <Property Name="QTY" Type="nvarchar" MaxLength="200" />
+          <Property Name="FiceTp" Type="nvarchar" MaxLength="200" />
+          <Property Name="TotalFiceAT" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“Johnson_UltBpm.dbo.T_StepUsers”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="T_StepUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="CreateDate" />
+            <PropertyRef Name="CreateUserCode" />
+            <PropertyRef Name="ProcessId" />
+            <PropertyRef Name="StepLabel" />
+            <PropertyRef Name="UserCode" />
+            <PropertyRef Name="Notes" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProcessId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="StepLabel" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="UserCode" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="3000" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“Johnson_UltBpm.dbo.T_TaskApproval”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="T_TaskApproval">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="CreateDate" />
+            <PropertyRef Name="CreateUserCode" />
+            <PropertyRef Name="ModifyDate" />
+            <PropertyRef Name="ModifyUserCode" />
+            <PropertyRef Name="ProcessId" />
+            <PropertyRef Name="SignKey" />
+            <PropertyRef Name="TaskId" />
+            <PropertyRef Name="StepLabel" />
+            <PropertyRef Name="Opinion" />
+            <PropertyRef Name="Comments" />
+            <PropertyRef Name="ApprovalStatus" />
+            <PropertyRef Name="ResultSignUserCount" />
+            <PropertyRef Name="ResultSignOpinion" />
+            <PropertyRef Name="IP" />
+            <PropertyRef Name="IsQueueOperation" />
+            <PropertyRef Name="ProcessIsEnd" />
+            <PropertyRef Name="IsCurrentBatch" />
+            <PropertyRef Name="Notes" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProcessId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SignKey" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="TaskId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="StepLabel" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Opinion" Type="int" Nullable="false" />
+          <Property Name="Comments" Type="varchar" MaxLength="3000" Nullable="false" />
+          <Property Name="ApprovalStatus" Type="int" Nullable="false" />
+          <Property Name="ResultSignUserCount" Type="int" Nullable="false" />
+          <Property Name="ResultSignOpinion" Type="int" Nullable="false" />
+          <Property Name="IP" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="SignedPhotograph" Type="image" />
+          <Property Name="IsQueueOperation" Type="int" Nullable="false" />
+          <Property Name="SaveTime" Type="datetime" />
+          <Property Name="SendTime" Type="datetime" />
+          <Property Name="QStartTime" Type="datetime" />
+          <Property Name="QEndTime" Type="datetime" />
+          <Property Name="EndTime" Type="datetime" />
+          <Property Name="FailedTime" Type="datetime" />
+          <Property Name="ProcessIsEnd" Type="int" Nullable="false" />
+          <Property Name="IsCurrentBatch" Type="int" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="3000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_TimeJY">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DelStatus" Type="int" Nullable="false" />
+          <Property Name="ProcessId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TypeA" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TypeB" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TypeC" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Vendorid" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FzSQE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SapNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Jcjg" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Jcx" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Jxpc" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SendTime" Type="datetime" Nullable="false" />
+          <Property Name="PlanRes" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SendComTime" Type="datetime" />
+          <Property Name="TestRes" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="EightBg" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Result" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="ConfirmRes" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Factory" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mails" Type="nvarchar" MaxLength="500" />
+          <Property Name="SendTimeRe" Type="datetime" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="500" />
+          <Property Name="LsId" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="T_TimeJYCho">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="TypeA" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TypeB" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TypeC" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_TimeJYLS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DelStatus" Type="int" Nullable="false" />
+          <Property Name="TypeA" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TypeB" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TypeC" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Vendorid" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FzSQE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SapNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Jcjg" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Jcx" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Jxpc" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SendTime" Type="datetime" Nullable="false" />
+          <Property Name="SendCount" Type="int" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“Johnson_UltBpm.dbo.T_Travel”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="T_Travel">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="CreateDate" />
+            <PropertyRef Name="CreateUserCode" />
+            <PropertyRef Name="ModifyDate" />
+            <PropertyRef Name="ModifyUserCode" />
+            <PropertyRef Name="DelStatus" />
+            <PropertyRef Name="ProcessId" />
+            <PropertyRef Name="ApplicantId" />
+            <PropertyRef Name="ApplicantDeptId" />
+            <PropertyRef Name="JobTitle" />
+            <PropertyRef Name="BusinessType" />
+            <PropertyRef Name="Cost" />
+            <PropertyRef Name="Test1" />
+            <PropertyRef Name="Test2" />
+            <PropertyRef Name="IsActiveSubProcess" />
+            <PropertyRef Name="Currency" />
+            <PropertyRef Name="TravelRemark" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DelStatus" Type="int" Nullable="false" />
+          <Property Name="ProcessId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ApplicantId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ApplicantDeptId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="JobTitle" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BusinessType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TravelStartDate" Type="datetime" />
+          <Property Name="TravelEndDate" Type="datetime" />
+          <Property Name="Cost" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="Test1" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Test2" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="IsActiveSubProcess" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Currency" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TravelRemark" Type="nvarchar" MaxLength="3000" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“Johnson_UltBpm.dbo.T_UltimusVariables”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="T_UltimusVariables">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="CreateDate" />
+            <PropertyRef Name="CreateUserCode" />
+            <PropertyRef Name="ModifyDate" />
+            <PropertyRef Name="ModifyUserCode" />
+            <PropertyRef Name="ProcessId" />
+            <PropertyRef Name="TaskId" />
+            <PropertyRef Name="VariableName" />
+            <PropertyRef Name="VariableValue" />
+            <PropertyRef Name="Notes" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyUserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProcessId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TaskId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="VariableName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="VariableValue" Type="varchar" MaxLength="3000" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="3000" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Johnson_UltBpmModelStoreContainer">
+          <EntitySet Name="T_AssignedToUserFuture" EntityType="Self.T_AssignedToUserFuture" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Dic_Parameter" EntityType="Self.T_Dic_Parameter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_GZOrderProcessConfig" EntityType="Self.T_GZOrderProcessConfig" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_GZOrderRelease" EntityType="Self.T_GZOrderRelease" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_GZOrderReleaseAttachment" EntityType="Self.T_GZOrderReleaseAttachment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_GZOrderReleaseProduct" EntityType="Self.T_GZOrderReleaseProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_GZOrderReview" EntityType="Self.T_GZOrderReview" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_GZOrderReviewProduct" EntityType="Self.T_GZOrderReviewProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_LogAssignedToUser" EntityType="Self.T_LogAssignedToUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_LogMail" EntityType="Self.T_LogMail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_MailBodyTemplate" EntityType="Self.T_MailBodyTemplate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_MailProcessConfig" EntityType="Self.T_MailProcessConfig" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_MailTasks" EntityType="Self.T_MailTasks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_SQInfo" EntityType="Self.T_SQInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_SQPrice" EntityType="Self.T_SQPrice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_TimeJY" EntityType="Self.T_TimeJY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_TimeJYCho" EntityType="Self.T_TimeJYCho" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_TimeJYLS" EntityType="Self.T_TimeJYLS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Attachment" EntityType="Self.T_Attachment" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [T_Attachment].[Id] AS [Id], 
+    [T_Attachment].[CreateDate] AS [CreateDate], 
+    [T_Attachment].[CreateUserCode] AS [CreateUserCode], 
+    [T_Attachment].[ModifyDate] AS [ModifyDate], 
+    [T_Attachment].[ModifyUserCode] AS [ModifyUserCode], 
+    [T_Attachment].[DelStatus] AS [DelStatus], 
+    [T_Attachment].[ProcessId] AS [ProcessId], 
+    [T_Attachment].[StepLabel] AS [StepLabel], 
+    [T_Attachment].[EdocFileId] AS [EdocFileId], 
+    [T_Attachment].[EdocFolderId] AS [EdocFolderId], 
+    [T_Attachment].[FileName] AS [FileName], 
+    [T_Attachment].[FileExtName] AS [FileExtName], 
+    [T_Attachment].[FileType] AS [FileType], 
+    [T_Attachment].[ExtendA] AS [ExtendA], 
+    [T_Attachment].[ExtendB] AS [ExtendB], 
+    [T_Attachment].[ExtendC] AS [ExtendC], 
+    [T_Attachment].[ExtendD] AS [ExtendD], 
+    [T_Attachment].[ExtendE] AS [ExtendE], 
+    [T_Attachment].[Notes] AS [Notes]
+    FROM [dbo].[T_Attachment] AS [T_Attachment]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="T_Countersign" EntityType="Self.T_Countersign" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [T_Countersign].[Id] AS [Id], 
+    [T_Countersign].[CreateDate] AS [CreateDate], 
+    [T_Countersign].[CreateUserCode] AS [CreateUserCode], 
+    [T_Countersign].[ProcessId] AS [ProcessId], 
+    [T_Countersign].[SignKey] AS [SignKey], 
+    [T_Countersign].[FirstSignUserCount] AS [FirstSignUserCount], 
+    [T_Countersign].[FirstSignOpinion] AS [FirstSignOpinion], 
+    [T_Countersign].[SignUserCount] AS [SignUserCount], 
+    [T_Countersign].[SignOpinion] AS [SignOpinion], 
+    [T_Countersign].[Notes] AS [Notes]
+    FROM [dbo].[T_Countersign] AS [T_Countersign]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="T_Process" EntityType="Self.T_Process" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [T_Process].[ProcessId] AS [ProcessId], 
+    [T_Process].[CreateDate] AS [CreateDate], 
+    [T_Process].[CreateUserCode] AS [CreateUserCode], 
+    [T_Process].[ModifyDate] AS [ModifyDate], 
+    [T_Process].[ModifyUserCode] AS [ModifyUserCode], 
+    [T_Process].[DelStatus] AS [DelStatus], 
+    [T_Process].[ProcessName] AS [ProcessName], 
+    [T_Process].[Incident] AS [Incident], 
+    [T_Process].[Summary] AS [Summary], 
+    [T_Process].[ProcessParentId] AS [ProcessParentId], 
+    [T_Process].[ProcessStatus] AS [ProcessStatus], 
+    [T_Process].[SaveTime] AS [SaveTime], 
+    [T_Process].[SendTime] AS [SendTime], 
+    [T_Process].[EndTime] AS [EndTime], 
+    [T_Process].[AbortTime] AS [AbortTime], 
+    [T_Process].[IncidentTime] AS [IncidentTime], 
+    [T_Process].[Notes] AS [Notes]
+    FROM [dbo].[T_Process] AS [T_Process]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="T_ProcessCategory" EntityType="Self.T_ProcessCategory" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [T_ProcessCategory].[Id] AS [Id], 
+    [T_ProcessCategory].[CreateDate] AS [CreateDate], 
+    [T_ProcessCategory].[CreateUserCode] AS [CreateUserCode], 
+    [T_ProcessCategory].[ModifyDate] AS [ModifyDate], 
+    [T_ProcessCategory].[ModifyUserCode] AS [ModifyUserCode], 
+    [T_ProcessCategory].[DelStatus] AS [DelStatus], 
+    [T_ProcessCategory].[ProcessName] AS [ProcessName], 
+    [T_ProcessCategory].[FormUrl] AS [FormUrl], 
+    [T_ProcessCategory].[FormType] AS [FormType], 
+    [T_ProcessCategory].[Notes] AS [Notes]
+    FROM [dbo].[T_ProcessCategory] AS [T_ProcessCategory]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="T_ProcessDbTables" EntityType="Self.T_ProcessDbTables" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [T_ProcessDbTables].[Id] AS [Id], 
+    [T_ProcessDbTables].[CreateDate] AS [CreateDate], 
+    [T_ProcessDbTables].[CreateUserCode] AS [CreateUserCode], 
+    [T_ProcessDbTables].[ModifyDate] AS [ModifyDate], 
+    [T_ProcessDbTables].[ModifyUserCode] AS [ModifyUserCode], 
+    [T_ProcessDbTables].[DelStatus] AS [DelStatus], 
+    [T_ProcessDbTables].[ProcessCategoryId] AS [ProcessCategoryId], 
+    [T_ProcessDbTables].[TableName] AS [TableName], 
+    [T_ProcessDbTables].[Condition] AS [Condition], 
+    [T_ProcessDbTables].[Sort] AS [Sort], 
+    [T_ProcessDbTables].[Notes] AS [Notes]
+    FROM [dbo].[T_ProcessDbTables] AS [T_ProcessDbTables]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="T_ProcessFavorites" EntityType="Self.T_ProcessFavorites" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [T_ProcessFavorites].[Id] AS [Id], 
+    [T_ProcessFavorites].[CreateDate] AS [CreateDate], 
+    [T_ProcessFavorites].[CreateUserCode] AS [CreateUserCode], 
+    [T_ProcessFavorites].[ModifyDate] AS [ModifyDate], 
+    [T_ProcessFavorites].[ModifyUserCode] AS [ModifyUserCode], 
+    [T_ProcessFavorites].[DelStatus] AS [DelStatus], 
+    [T_ProcessFavorites].[ProcessName] AS [ProcessName], 
+    [T_ProcessFavorites].[Notes] AS [Notes]
+    FROM [dbo].[T_ProcessFavorites] AS [T_ProcessFavorites]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="T_StepUsers" EntityType="Self.T_StepUsers" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [T_StepUsers].[Id] AS [Id], 
+    [T_StepUsers].[CreateDate] AS [CreateDate], 
+    [T_StepUsers].[CreateUserCode] AS [CreateUserCode], 
+    [T_StepUsers].[ProcessId] AS [ProcessId], 
+    [T_StepUsers].[StepLabel] AS [StepLabel], 
+    [T_StepUsers].[UserCode] AS [UserCode], 
+    [T_StepUsers].[Notes] AS [Notes]
+    FROM [dbo].[T_StepUsers] AS [T_StepUsers]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="T_TaskApproval" EntityType="Self.T_TaskApproval" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [T_TaskApproval].[Id] AS [Id], 
+    [T_TaskApproval].[CreateDate] AS [CreateDate], 
+    [T_TaskApproval].[CreateUserCode] AS [CreateUserCode], 
+    [T_TaskApproval].[ModifyDate] AS [ModifyDate], 
+    [T_TaskApproval].[ModifyUserCode] AS [ModifyUserCode], 
+    [T_TaskApproval].[ProcessId] AS [ProcessId], 
+    [T_TaskApproval].[SignKey] AS [SignKey], 
+    [T_TaskApproval].[TaskId] AS [TaskId], 
+    [T_TaskApproval].[StepLabel] AS [StepLabel], 
+    [T_TaskApproval].[Opinion] AS [Opinion], 
+    [T_TaskApproval].[Comments] AS [Comments], 
+    [T_TaskApproval].[ApprovalStatus] AS [ApprovalStatus], 
+    [T_TaskApproval].[ResultSignUserCount] AS [ResultSignUserCount], 
+    [T_TaskApproval].[ResultSignOpinion] AS [ResultSignOpinion], 
+    [T_TaskApproval].[IP] AS [IP], 
+    [T_TaskApproval].[SignedPhotograph] AS [SignedPhotograph], 
+    [T_TaskApproval].[IsQueueOperation] AS [IsQueueOperation], 
+    [T_TaskApproval].[SaveTime] AS [SaveTime], 
+    [T_TaskApproval].[SendTime] AS [SendTime], 
+    [T_TaskApproval].[QStartTime] AS [QStartTime], 
+    [T_TaskApproval].[QEndTime] AS [QEndTime], 
+    [T_TaskApproval].[EndTime] AS [EndTime], 
+    [T_TaskApproval].[FailedTime] AS [FailedTime], 
+    [T_TaskApproval].[ProcessIsEnd] AS [ProcessIsEnd], 
+    [T_TaskApproval].[IsCurrentBatch] AS [IsCurrentBatch], 
+    [T_TaskApproval].[Notes] AS [Notes]
+    FROM [dbo].[T_TaskApproval] AS [T_TaskApproval]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="T_Travel" EntityType="Self.T_Travel" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [T_Travel].[Id] AS [Id], 
+    [T_Travel].[CreateDate] AS [CreateDate], 
+    [T_Travel].[CreateUserCode] AS [CreateUserCode], 
+    [T_Travel].[ModifyDate] AS [ModifyDate], 
+    [T_Travel].[ModifyUserCode] AS [ModifyUserCode], 
+    [T_Travel].[DelStatus] AS [DelStatus], 
+    [T_Travel].[ProcessId] AS [ProcessId], 
+    [T_Travel].[ApplicantId] AS [ApplicantId], 
+    [T_Travel].[ApplicantDeptId] AS [ApplicantDeptId], 
+    [T_Travel].[JobTitle] AS [JobTitle], 
+    [T_Travel].[BusinessType] AS [BusinessType], 
+    [T_Travel].[TravelStartDate] AS [TravelStartDate], 
+    [T_Travel].[TravelEndDate] AS [TravelEndDate], 
+    [T_Travel].[Cost] AS [Cost], 
+    [T_Travel].[Test1] AS [Test1], 
+    [T_Travel].[Test2] AS [Test2], 
+    [T_Travel].[IsActiveSubProcess] AS [IsActiveSubProcess], 
+    [T_Travel].[Currency] AS [Currency], 
+    [T_Travel].[TravelRemark] AS [TravelRemark]
+    FROM [dbo].[T_Travel] AS [T_Travel]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="T_UltimusVariables" EntityType="Self.T_UltimusVariables" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [T_UltimusVariables].[Id] AS [Id], 
+    [T_UltimusVariables].[CreateDate] AS [CreateDate], 
+    [T_UltimusVariables].[CreateUserCode] AS [CreateUserCode], 
+    [T_UltimusVariables].[ModifyDate] AS [ModifyDate], 
+    [T_UltimusVariables].[ModifyUserCode] AS [ModifyUserCode], 
+    [T_UltimusVariables].[ProcessId] AS [ProcessId], 
+    [T_UltimusVariables].[TaskId] AS [TaskId], 
+    [T_UltimusVariables].[VariableName] AS [VariableName], 
+    [T_UltimusVariables].[VariableValue] AS [VariableValue], 
+    [T_UltimusVariables].[Notes] AS [Notes]
+    FROM [dbo].[T_UltimusVariables] AS [T_UltimusVariables]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Johnson_UltBpmModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="T_AssignedToUserFuture">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DelStatus" Type="Int32" Nullable="false" />
+          <Property Name="OriginalAssignedToUser" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TargetAssignedToUser" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Notes" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_Dic_Parameter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DelStatus" Type="Int32" Nullable="false" />
+          <Property Name="ParamName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ParentId" Type="Int32" Nullable="false" />
+          <Property Name="ParamTypeCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_GZOrderProcessConfig">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DelStatus" Type="Int32" Nullable="false" />
+          <Property Name="ProductType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Design_UserCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MPD_UserCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Check_UserCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Review_UserCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PUR_UserCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Issue_UserCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BOM_UserCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Implement_UserCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Implement1_UserCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Implement2_UserCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Implement3_UserCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Implement4_UserCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Spare1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Spare2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Process_UserCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Quality_UserCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Purchasing_UserCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Electrical_UserCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ETD_UserCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Director_UserCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PMC_UserCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_GZOrderRelease">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DelStatus" Type="Int32" Nullable="false" />
+          <Property Name="ProcessId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ApplicantId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProductType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IssuingType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OrderType" Type="Int32" Nullable="false" />
+          <Property Name="OrderVersion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Check_UserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Review_UserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsNewMaterial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsProcessorQuality" Type="Int32" Nullable="false" />
+          <Property Name="ProjectTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SONO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="JDSNO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DeliveryDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DrawingRecognition" Type="Int32" Nullable="false" />
+          <Property Name="IsSecondBOM" Type="Int32" Nullable="false" />
+          <Property Name="Office" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OfficeContacts" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BOMDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BOMFinish" Type="Int32" Nullable="false" />
+          <Property Name="BOM_UserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Issue_UserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Implement1_UserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ImplementFinish1" Type="Int32" Nullable="false" />
+          <Property Name="Implement2_UserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ImplementFinish2" Type="Int32" Nullable="false" />
+          <Property Name="Implement3_UserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ImplementFinish3" Type="Int32" Nullable="false" />
+          <Property Name="Implement4_UserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ImplementFinish4" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_GZOrderReleaseAttachment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DelStatus" Type="Int32" Nullable="false" />
+          <Property Name="ProcessId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StepLabel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EdocFileId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EdocFolderId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FileName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FileExtName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FileType" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FileNum" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FileDescribe" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SAP" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Version" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EffectiveDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Property" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IssuingDept" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ExtendA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_GZOrderReleaseProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DelStatus" Type="Int32" Nullable="false" />
+          <Property Name="ProcessId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Item" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Material" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MaterialNum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Requirement" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DeliveryDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CrewFinishDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Implement" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_GZOrderReview">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DelStatus" Type="Int32" Nullable="false" />
+          <Property Name="ProcessId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ApplicantId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProductType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IssuingType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OrderType" Type="Int32" Nullable="false" />
+          <Property Name="IsReview" Type="Int32" Nullable="false" />
+          <Property Name="BOM_UserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BOM_RealName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NewPurchasing_UserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NewPurchasing_RealName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Assignment_UserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Assignment_RealName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProjectTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SONO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="JDSNO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DeliveryDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DrawingRecognition" Type="Int32" Nullable="false" />
+          <Property Name="IsSecondBOM" Type="Int32" Nullable="false" />
+          <Property Name="Office" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OfficeContacts" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OrderVersion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsNewMaterial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DesignFinishDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Process_UserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Process_RealName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProcessFinishDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Quality_UserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Quality_RealName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="QualityFinishDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Purchasing_UserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Purchasing_RealName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PurchasingFinishDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Electrical_UserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Electrical_RealName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ElectricalFinishDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ETD_UserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ETD_RealName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ETDFinishDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Director_UserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Director_RealName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DirectorFinishDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="T_GZOrderReviewProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DelStatus" Type="Int32" Nullable="false" />
+          <Property Name="ProcessId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Item" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Material" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MaterialNum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Requirement" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DeliveryDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CrewFinishDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="T_LogAssignedToUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DelStatus" Type="Int32" Nullable="false" />
+          <Property Name="ProcessName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Incident" Type="Int32" Nullable="false" />
+          <Property Name="StepLabel" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TaskId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OriginalAssignedToUser" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TargetAssignedToUser" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AssignedType" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Notes" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_LogMail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DelStatus" Type="Int32" Nullable="false" />
+          <Property Name="ProcessId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TaskId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StepLabel" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Subject" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MailTo" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MailCc" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MailBcc" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="QStartTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="QEndTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MailSendStatus" Type="Int32" Nullable="false" />
+          <Property Name="MailSendTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastReminderTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MailSendCycle" Type="Int32" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_MailBodyTemplate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DelStatus" Type="Int32" Nullable="false" />
+          <Property Name="ProcessId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Subject" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MailTo" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MailCc" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MailBcc" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StepLabel" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_MailProcessConfig">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ProcessName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StepLabel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsMailOpinion" Type="Int32" Nullable="false" />
+          <Property Name="MailSendCycle" Type="Int32" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_MailTasks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DelStatus" Type="Int32" Nullable="false" />
+          <Property Name="ProcessId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TaskId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StepLabel" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Subject" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MailTo" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MailCc" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MailBcc" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MailSendStatus" Type="Int32" Nullable="false" />
+          <Property Name="MailSendTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastReminderTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MailSendCycle" Type="Int32" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_SQInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DelStatus" Type="Int32" Nullable="false" />
+          <Property Name="ProcessId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProjectName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SQNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SQFrom" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SaleOffice" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SQUnFrom" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SQDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ChillerType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UnitModel" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Quantity" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SQFor" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AppType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EnquiryFrom" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="QuoteBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Undesigntime" Type="Int32" Nullable="false" />
+          <Property Name="Purchastingtime" Type="Int32" Nullable="false" />
+          <Property Name="LeadtimeInfo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Globalcode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Versions" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_SQPrice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DelStatus" Type="Int32" Nullable="false" />
+          <Property Name="ProcessId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PN" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="SQUnDescr" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SQSDescr" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SQLevel1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SQLevel2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SQLevel3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SQLevel4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SepMaterial" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="StdMaterial" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="LOADD" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="EngFee" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="typea" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="typeb" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="totleMLO" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="TotalFiceBT" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="QTY" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="FiceTp" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TotalFiceAT" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="T_TimeJY">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DelStatus" Type="Int32" Nullable="false" />
+          <Property Name="ProcessId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TypeA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TypeB" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TypeC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Vendorid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FzSQE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SapNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Jcjg" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Jcx" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Jxpc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SendTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PlanRes" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SendComTime" Type="DateTime" Precision="3" />
+          <Property Name="TestRes" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EightBg" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Result" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ConfirmRes" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Factory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mails" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SendTimeRe" Type="DateTime" Precision="3" />
+          <Property Name="Reason" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="LsId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="T_TimeJYCho">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="TypeA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TypeB" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TypeC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_TimeJYLS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DelStatus" Type="Int32" Nullable="false" />
+          <Property Name="TypeA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TypeB" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TypeC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Vendorid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FzSQE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SapNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Jcjg" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Jcx" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Jxpc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SendTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SendCount" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_Attachment">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="CreateDate" />
+            <PropertyRef Name="CreateUserCode" />
+            <PropertyRef Name="ModifyDate" />
+            <PropertyRef Name="ModifyUserCode" />
+            <PropertyRef Name="DelStatus" />
+            <PropertyRef Name="ProcessId" />
+            <PropertyRef Name="StepLabel" />
+            <PropertyRef Name="EdocFileId" />
+            <PropertyRef Name="EdocFolderId" />
+            <PropertyRef Name="FileName" />
+            <PropertyRef Name="FileExtName" />
+            <PropertyRef Name="FileType" />
+            <PropertyRef Name="ExtendA" />
+            <PropertyRef Name="ExtendB" />
+            <PropertyRef Name="ExtendC" />
+            <PropertyRef Name="ExtendD" />
+            <PropertyRef Name="ExtendE" />
+            <PropertyRef Name="Notes" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DelStatus" Type="Int32" Nullable="false" />
+          <Property Name="ProcessId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StepLabel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EdocFileId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EdocFolderId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FileName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FileExtName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FileType" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ExtendA" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ExtendB" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ExtendC" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ExtendD" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ExtendE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_Countersign">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="CreateDate" />
+            <PropertyRef Name="CreateUserCode" />
+            <PropertyRef Name="ProcessId" />
+            <PropertyRef Name="SignKey" />
+            <PropertyRef Name="FirstSignUserCount" />
+            <PropertyRef Name="FirstSignOpinion" />
+            <PropertyRef Name="SignUserCount" />
+            <PropertyRef Name="SignOpinion" />
+            <PropertyRef Name="Notes" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProcessId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SignKey" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FirstSignUserCount" Type="Int32" Nullable="false" />
+          <Property Name="FirstSignOpinion" Type="Int32" Nullable="false" />
+          <Property Name="SignUserCount" Type="Int32" Nullable="false" />
+          <Property Name="SignOpinion" Type="Int32" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_Process">
+          <Key>
+            <PropertyRef Name="ProcessId" />
+            <PropertyRef Name="CreateDate" />
+            <PropertyRef Name="CreateUserCode" />
+            <PropertyRef Name="ModifyDate" />
+            <PropertyRef Name="ModifyUserCode" />
+            <PropertyRef Name="DelStatus" />
+            <PropertyRef Name="ProcessName" />
+            <PropertyRef Name="Incident" />
+            <PropertyRef Name="Summary" />
+            <PropertyRef Name="ProcessParentId" />
+            <PropertyRef Name="ProcessStatus" />
+            <PropertyRef Name="Notes" />
+          </Key>
+          <Property Name="ProcessId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DelStatus" Type="Int32" Nullable="false" />
+          <Property Name="ProcessName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Incident" Type="Int32" Nullable="false" />
+          <Property Name="Summary" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProcessParentId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProcessStatus" Type="Int32" Nullable="false" />
+          <Property Name="SaveTime" Type="DateTime" Precision="3" />
+          <Property Name="SendTime" Type="DateTime" Precision="3" />
+          <Property Name="EndTime" Type="DateTime" Precision="3" />
+          <Property Name="AbortTime" Type="DateTime" Precision="3" />
+          <Property Name="IncidentTime" Type="DateTime" Precision="3" />
+          <Property Name="Notes" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_ProcessCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="CreateDate" />
+            <PropertyRef Name="CreateUserCode" />
+            <PropertyRef Name="ModifyDate" />
+            <PropertyRef Name="ModifyUserCode" />
+            <PropertyRef Name="DelStatus" />
+            <PropertyRef Name="ProcessName" />
+            <PropertyRef Name="FormUrl" />
+            <PropertyRef Name="FormType" />
+            <PropertyRef Name="Notes" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DelStatus" Type="Int32" Nullable="false" />
+          <Property Name="ProcessName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FormUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FormType" Type="Int32" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_ProcessDbTables">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="CreateDate" />
+            <PropertyRef Name="CreateUserCode" />
+            <PropertyRef Name="ModifyDate" />
+            <PropertyRef Name="ModifyUserCode" />
+            <PropertyRef Name="DelStatus" />
+            <PropertyRef Name="ProcessCategoryId" />
+            <PropertyRef Name="TableName" />
+            <PropertyRef Name="Condition" />
+            <PropertyRef Name="Sort" />
+            <PropertyRef Name="Notes" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DelStatus" Type="Int32" Nullable="false" />
+          <Property Name="ProcessCategoryId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TableName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Condition" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_ProcessFavorites">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="CreateDate" />
+            <PropertyRef Name="CreateUserCode" />
+            <PropertyRef Name="ModifyDate" />
+            <PropertyRef Name="ModifyUserCode" />
+            <PropertyRef Name="DelStatus" />
+            <PropertyRef Name="ProcessName" />
+            <PropertyRef Name="Notes" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DelStatus" Type="Int32" Nullable="false" />
+          <Property Name="ProcessName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_StepUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="CreateDate" />
+            <PropertyRef Name="CreateUserCode" />
+            <PropertyRef Name="ProcessId" />
+            <PropertyRef Name="StepLabel" />
+            <PropertyRef Name="UserCode" />
+            <PropertyRef Name="Notes" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProcessId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StepLabel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserCode" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_TaskApproval">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="CreateDate" />
+            <PropertyRef Name="CreateUserCode" />
+            <PropertyRef Name="ModifyDate" />
+            <PropertyRef Name="ModifyUserCode" />
+            <PropertyRef Name="ProcessId" />
+            <PropertyRef Name="SignKey" />
+            <PropertyRef Name="TaskId" />
+            <PropertyRef Name="StepLabel" />
+            <PropertyRef Name="Opinion" />
+            <PropertyRef Name="Comments" />
+            <PropertyRef Name="ApprovalStatus" />
+            <PropertyRef Name="ResultSignUserCount" />
+            <PropertyRef Name="ResultSignOpinion" />
+            <PropertyRef Name="IP" />
+            <PropertyRef Name="IsQueueOperation" />
+            <PropertyRef Name="ProcessIsEnd" />
+            <PropertyRef Name="IsCurrentBatch" />
+            <PropertyRef Name="Notes" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProcessId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SignKey" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TaskId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StepLabel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Opinion" Type="Int32" Nullable="false" />
+          <Property Name="Comments" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ApprovalStatus" Type="Int32" Nullable="false" />
+          <Property Name="ResultSignUserCount" Type="Int32" Nullable="false" />
+          <Property Name="ResultSignOpinion" Type="Int32" Nullable="false" />
+          <Property Name="IP" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SignedPhotograph" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="IsQueueOperation" Type="Int32" Nullable="false" />
+          <Property Name="SaveTime" Type="DateTime" Precision="3" />
+          <Property Name="SendTime" Type="DateTime" Precision="3" />
+          <Property Name="QStartTime" Type="DateTime" Precision="3" />
+          <Property Name="QEndTime" Type="DateTime" Precision="3" />
+          <Property Name="EndTime" Type="DateTime" Precision="3" />
+          <Property Name="FailedTime" Type="DateTime" Precision="3" />
+          <Property Name="ProcessIsEnd" Type="Int32" Nullable="false" />
+          <Property Name="IsCurrentBatch" Type="Int32" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_Travel">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="CreateDate" />
+            <PropertyRef Name="CreateUserCode" />
+            <PropertyRef Name="ModifyDate" />
+            <PropertyRef Name="ModifyUserCode" />
+            <PropertyRef Name="DelStatus" />
+            <PropertyRef Name="ProcessId" />
+            <PropertyRef Name="ApplicantId" />
+            <PropertyRef Name="ApplicantDeptId" />
+            <PropertyRef Name="JobTitle" />
+            <PropertyRef Name="BusinessType" />
+            <PropertyRef Name="Cost" />
+            <PropertyRef Name="Test1" />
+            <PropertyRef Name="Test2" />
+            <PropertyRef Name="IsActiveSubProcess" />
+            <PropertyRef Name="Currency" />
+            <PropertyRef Name="TravelRemark" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DelStatus" Type="Int32" Nullable="false" />
+          <Property Name="ProcessId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ApplicantId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ApplicantDeptId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="JobTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BusinessType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TravelStartDate" Type="DateTime" Precision="3" />
+          <Property Name="TravelEndDate" Type="DateTime" Precision="3" />
+          <Property Name="Cost" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="Test1" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Test2" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsActiveSubProcess" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TravelRemark" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_UltimusVariables">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="CreateDate" />
+            <PropertyRef Name="CreateUserCode" />
+            <PropertyRef Name="ModifyDate" />
+            <PropertyRef Name="ModifyUserCode" />
+            <PropertyRef Name="ProcessId" />
+            <PropertyRef Name="TaskId" />
+            <PropertyRef Name="VariableName" />
+            <PropertyRef Name="VariableValue" />
+            <PropertyRef Name="Notes" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProcessId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TaskId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VariableName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VariableValue" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Johnson_UltBpmEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="T_AssignedToUserFuture" EntityType="Self.T_AssignedToUserFuture" />
+          <EntitySet Name="T_Dic_Parameter" EntityType="Self.T_Dic_Parameter" />
+          <EntitySet Name="T_GZOrderProcessConfig" EntityType="Self.T_GZOrderProcessConfig" />
+          <EntitySet Name="T_GZOrderRelease" EntityType="Self.T_GZOrderRelease" />
+          <EntitySet Name="T_GZOrderReleaseAttachment" EntityType="Self.T_GZOrderReleaseAttachment" />
+          <EntitySet Name="T_GZOrderReleaseProduct" EntityType="Self.T_GZOrderReleaseProduct" />
+          <EntitySet Name="T_GZOrderReview" EntityType="Self.T_GZOrderReview" />
+          <EntitySet Name="T_GZOrderReviewProduct" EntityType="Self.T_GZOrderReviewProduct" />
+          <EntitySet Name="T_LogAssignedToUser" EntityType="Self.T_LogAssignedToUser" />
+          <EntitySet Name="T_LogMail" EntityType="Self.T_LogMail" />
+          <EntitySet Name="T_MailBodyTemplate" EntityType="Self.T_MailBodyTemplate" />
+          <EntitySet Name="T_MailProcessConfig" EntityType="Self.T_MailProcessConfig" />
+          <EntitySet Name="T_MailTasks" EntityType="Self.T_MailTasks" />
+          <EntitySet Name="T_SQInfo" EntityType="Self.T_SQInfo" />
+          <EntitySet Name="T_SQPrice" EntityType="Self.T_SQPrice" />
+          <EntitySet Name="T_TimeJY" EntityType="Self.T_TimeJY" />
+          <EntitySet Name="T_TimeJYCho" EntityType="Self.T_TimeJYCho" />
+          <EntitySet Name="T_TimeJYLS" EntityType="Self.T_TimeJYLS" />
+          <EntitySet Name="T_Attachment" EntityType="Self.T_Attachment" />
+          <EntitySet Name="T_Countersign" EntityType="Self.T_Countersign" />
+          <EntitySet Name="T_Process" EntityType="Self.T_Process" />
+          <EntitySet Name="T_ProcessCategory" EntityType="Self.T_ProcessCategory" />
+          <EntitySet Name="T_ProcessDbTables" EntityType="Self.T_ProcessDbTables" />
+          <EntitySet Name="T_ProcessFavorites" EntityType="Self.T_ProcessFavorites" />
+          <EntitySet Name="T_StepUsers" EntityType="Self.T_StepUsers" />
+          <EntitySet Name="T_TaskApproval" EntityType="Self.T_TaskApproval" />
+          <EntitySet Name="T_Travel" EntityType="Self.T_Travel" />
+          <EntitySet Name="T_UltimusVariables" EntityType="Self.T_UltimusVariables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Johnson_UltBpmModelStoreContainer" CdmEntityContainer="Johnson_UltBpmEntities">
+          <EntitySetMapping Name="T_AssignedToUserFuture">
+            <EntityTypeMapping TypeName="Johnson_UltBpmModel.T_AssignedToUserFuture">
+              <MappingFragment StoreEntitySet="T_AssignedToUserFuture">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUserCode" ColumnName="CreateUserCode" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyUserCode" ColumnName="ModifyUserCode" />
+                <ScalarProperty Name="DelStatus" ColumnName="DelStatus" />
+                <ScalarProperty Name="OriginalAssignedToUser" ColumnName="OriginalAssignedToUser" />
+                <ScalarProperty Name="TargetAssignedToUser" ColumnName="TargetAssignedToUser" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Dic_Parameter">
+            <EntityTypeMapping TypeName="Johnson_UltBpmModel.T_Dic_Parameter">
+              <MappingFragment StoreEntitySet="T_Dic_Parameter">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUserCode" ColumnName="CreateUserCode" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyUserCode" ColumnName="ModifyUserCode" />
+                <ScalarProperty Name="DelStatus" ColumnName="DelStatus" />
+                <ScalarProperty Name="ParamName" ColumnName="ParamName" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="ParamTypeCode" ColumnName="ParamTypeCode" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_GZOrderProcessConfig">
+            <EntityTypeMapping TypeName="Johnson_UltBpmModel.T_GZOrderProcessConfig">
+              <MappingFragment StoreEntitySet="T_GZOrderProcessConfig">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUserCode" ColumnName="CreateUserCode" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyUserCode" ColumnName="ModifyUserCode" />
+                <ScalarProperty Name="DelStatus" ColumnName="DelStatus" />
+                <ScalarProperty Name="ProductType" ColumnName="ProductType" />
+                <ScalarProperty Name="Design_UserCode" ColumnName="Design_UserCode" />
+                <ScalarProperty Name="MPD_UserCode" ColumnName="MPD_UserCode" />
+                <ScalarProperty Name="Check_UserCode" ColumnName="Check_UserCode" />
+                <ScalarProperty Name="Review_UserCode" ColumnName="Review_UserCode" />
+                <ScalarProperty Name="PUR_UserCode" ColumnName="PUR_UserCode" />
+                <ScalarProperty Name="Issue_UserCode" ColumnName="Issue_UserCode" />
+                <ScalarProperty Name="BOM_UserCode" ColumnName="BOM_UserCode" />
+                <ScalarProperty Name="Implement_UserCode" ColumnName="Implement_UserCode" />
+                <ScalarProperty Name="Implement1_UserCode" ColumnName="Implement1_UserCode" />
+                <ScalarProperty Name="Implement2_UserCode" ColumnName="Implement2_UserCode" />
+                <ScalarProperty Name="Implement3_UserCode" ColumnName="Implement3_UserCode" />
+                <ScalarProperty Name="Implement4_UserCode" ColumnName="Implement4_UserCode" />
+                <ScalarProperty Name="Spare1" ColumnName="Spare1" />
+                <ScalarProperty Name="Spare2" ColumnName="Spare2" />
+                <ScalarProperty Name="Process_UserCode" ColumnName="Process_UserCode" />
+                <ScalarProperty Name="Quality_UserCode" ColumnName="Quality_UserCode" />
+                <ScalarProperty Name="Purchasing_UserCode" ColumnName="Purchasing_UserCode" />
+                <ScalarProperty Name="Electrical_UserCode" ColumnName="Electrical_UserCode" />
+                <ScalarProperty Name="ETD_UserCode" ColumnName="ETD_UserCode" />
+                <ScalarProperty Name="Director_UserCode" ColumnName="Director_UserCode" />
+                <ScalarProperty Name="PMC_UserCode" ColumnName="PMC_UserCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_GZOrderRelease">
+            <EntityTypeMapping TypeName="Johnson_UltBpmModel.T_GZOrderRelease">
+              <MappingFragment StoreEntitySet="T_GZOrderRelease">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUserCode" ColumnName="CreateUserCode" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyUserCode" ColumnName="ModifyUserCode" />
+                <ScalarProperty Name="DelStatus" ColumnName="DelStatus" />
+                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+                <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
+                <ScalarProperty Name="ProductType" ColumnName="ProductType" />
+                <ScalarProperty Name="IssuingType" ColumnName="IssuingType" />
+                <ScalarProperty Name="OrderType" ColumnName="OrderType" />
+                <ScalarProperty Name="OrderVersion" ColumnName="OrderVersion" />
+                <ScalarProperty Name="Check_UserCode" ColumnName="Check_UserCode" />
+                <ScalarProperty Name="Review_UserCode" ColumnName="Review_UserCode" />
+                <ScalarProperty Name="IsNewMaterial" ColumnName="IsNewMaterial" />
+                <ScalarProperty Name="IsProcessorQuality" ColumnName="IsProcessorQuality" />
+                <ScalarProperty Name="ProjectTitle" ColumnName="ProjectTitle" />
+                <ScalarProperty Name="SONO" ColumnName="SONO" />
+                <ScalarProperty Name="JDSNO" ColumnName="JDSNO" />
+                <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+                <ScalarProperty Name="DrawingRecognition" ColumnName="DrawingRecognition" />
+                <ScalarProperty Name="IsSecondBOM" ColumnName="IsSecondBOM" />
+                <ScalarProperty Name="Office" ColumnName="Office" />
+                <ScalarProperty Name="OfficeContacts" ColumnName="OfficeContacts" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="BOMDate" ColumnName="BOMDate" />
+                <ScalarProperty Name="BOMFinish" ColumnName="BOMFinish" />
+                <ScalarProperty Name="BOM_UserCode" ColumnName="BOM_UserCode" />
+                <ScalarProperty Name="Issue_UserCode" ColumnName="Issue_UserCode" />
+                <ScalarProperty Name="Implement1_UserCode" ColumnName="Implement1_UserCode" />
+                <ScalarProperty Name="ImplementFinish1" ColumnName="ImplementFinish1" />
+                <ScalarProperty Name="Implement2_UserCode" ColumnName="Implement2_UserCode" />
+                <ScalarProperty Name="ImplementFinish2" ColumnName="ImplementFinish2" />
+                <ScalarProperty Name="Implement3_UserCode" ColumnName="Implement3_UserCode" />
+                <ScalarProperty Name="ImplementFinish3" ColumnName="ImplementFinish3" />
+                <ScalarProperty Name="Implement4_UserCode" ColumnName="Implement4_UserCode" />
+                <ScalarProperty Name="ImplementFinish4" ColumnName="ImplementFinish4" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_GZOrderReleaseAttachment">
+            <EntityTypeMapping TypeName="Johnson_UltBpmModel.T_GZOrderReleaseAttachment">
+              <MappingFragment StoreEntitySet="T_GZOrderReleaseAttachment">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUserCode" ColumnName="CreateUserCode" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyUserCode" ColumnName="ModifyUserCode" />
+                <ScalarProperty Name="DelStatus" ColumnName="DelStatus" />
+                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+                <ScalarProperty Name="StepLabel" ColumnName="StepLabel" />
+                <ScalarProperty Name="EdocFileId" ColumnName="EdocFileId" />
+                <ScalarProperty Name="EdocFolderId" ColumnName="EdocFolderId" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FileExtName" ColumnName="FileExtName" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+                <ScalarProperty Name="FileNum" ColumnName="FileNum" />
+                <ScalarProperty Name="FileDescribe" ColumnName="FileDescribe" />
+                <ScalarProperty Name="SAP" ColumnName="SAP" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="EffectiveDate" ColumnName="EffectiveDate" />
+                <ScalarProperty Name="Property" ColumnName="Property" />
+                <ScalarProperty Name="IssuingDept" ColumnName="IssuingDept" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="ExtendA" ColumnName="ExtendA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_GZOrderReleaseProduct">
+            <EntityTypeMapping TypeName="Johnson_UltBpmModel.T_GZOrderReleaseProduct">
+              <MappingFragment StoreEntitySet="T_GZOrderReleaseProduct">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUserCode" ColumnName="CreateUserCode" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyUserCode" ColumnName="ModifyUserCode" />
+                <ScalarProperty Name="DelStatus" ColumnName="DelStatus" />
+                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+                <ScalarProperty Name="Item" ColumnName="Item" />
+                <ScalarProperty Name="Material" ColumnName="Material" />
+                <ScalarProperty Name="MaterialNum" ColumnName="MaterialNum" />
+                <ScalarProperty Name="Requirement" ColumnName="Requirement" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+                <ScalarProperty Name="CrewFinishDate" ColumnName="CrewFinishDate" />
+                <ScalarProperty Name="Implement" ColumnName="Implement" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_GZOrderReview">
+            <EntityTypeMapping TypeName="Johnson_UltBpmModel.T_GZOrderReview">
+              <MappingFragment StoreEntitySet="T_GZOrderReview">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUserCode" ColumnName="CreateUserCode" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyUserCode" ColumnName="ModifyUserCode" />
+                <ScalarProperty Name="DelStatus" ColumnName="DelStatus" />
+                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+                <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
+                <ScalarProperty Name="ProductType" ColumnName="ProductType" />
+                <ScalarProperty Name="IssuingType" ColumnName="IssuingType" />
+                <ScalarProperty Name="OrderType" ColumnName="OrderType" />
+                <ScalarProperty Name="IsReview" ColumnName="IsReview" />
+                <ScalarProperty Name="BOM_UserCode" ColumnName="BOM_UserCode" />
+                <ScalarProperty Name="BOM_RealName" ColumnName="BOM_RealName" />
+                <ScalarProperty Name="NewPurchasing_UserCode" ColumnName="NewPurchasing_UserCode" />
+                <ScalarProperty Name="NewPurchasing_RealName" ColumnName="NewPurchasing_RealName" />
+                <ScalarProperty Name="Assignment_UserCode" ColumnName="Assignment_UserCode" />
+                <ScalarProperty Name="Assignment_RealName" ColumnName="Assignment_RealName" />
+                <ScalarProperty Name="ProjectTitle" ColumnName="ProjectTitle" />
+                <ScalarProperty Name="SONO" ColumnName="SONO" />
+                <ScalarProperty Name="JDSNO" ColumnName="JDSNO" />
+                <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+                <ScalarProperty Name="DrawingRecognition" ColumnName="DrawingRecognition" />
+                <ScalarProperty Name="IsSecondBOM" ColumnName="IsSecondBOM" />
+                <ScalarProperty Name="Office" ColumnName="Office" />
+                <ScalarProperty Name="OfficeContacts" ColumnName="OfficeContacts" />
+                <ScalarProperty Name="OrderVersion" ColumnName="OrderVersion" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="IsNewMaterial" ColumnName="IsNewMaterial" />
+                <ScalarProperty Name="DesignFinishDate" ColumnName="DesignFinishDate" />
+                <ScalarProperty Name="Process_UserCode" ColumnName="Process_UserCode" />
+                <ScalarProperty Name="Process_RealName" ColumnName="Process_RealName" />
+                <ScalarProperty Name="ProcessFinishDate" ColumnName="ProcessFinishDate" />
+                <ScalarProperty Name="Quality_UserCode" ColumnName="Quality_UserCode" />
+                <ScalarProperty Name="Quality_RealName" ColumnName="Quality_RealName" />
+                <ScalarProperty Name="QualityFinishDate" ColumnName="QualityFinishDate" />
+                <ScalarProperty Name="Purchasing_UserCode" ColumnName="Purchasing_UserCode" />
+                <ScalarProperty Name="Purchasing_RealName" ColumnName="Purchasing_RealName" />
+                <ScalarProperty Name="PurchasingFinishDate" ColumnName="PurchasingFinishDate" />
+                <ScalarProperty Name="Electrical_UserCode" ColumnName="Electrical_UserCode" />
+                <ScalarProperty Name="Electrical_RealName" ColumnName="Electrical_RealName" />
+                <ScalarProperty Name="ElectricalFinishDate" ColumnName="ElectricalFinishDate" />
+                <ScalarProperty Name="ETD_UserCode" ColumnName="ETD_UserCode" />
+                <ScalarProperty Name="ETD_RealName" ColumnName="ETD_RealName" />
+                <ScalarProperty Name="ETDFinishDate" ColumnName="ETDFinishDate" />
+                <ScalarProperty Name="Director_UserCode" ColumnName="Director_UserCode" />
+                <ScalarProperty Name="Director_RealName" ColumnName="Director_RealName" />
+                <ScalarProperty Name="DirectorFinishDate" ColumnName="DirectorFinishDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_GZOrderReviewProduct">
+            <EntityTypeMapping TypeName="Johnson_UltBpmModel.T_GZOrderReviewProduct">
+              <MappingFragment StoreEntitySet="T_GZOrderReviewProduct">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUserCode" ColumnName="CreateUserCode" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyUserCode" ColumnName="ModifyUserCode" />
+                <ScalarProperty Name="DelStatus" ColumnName="DelStatus" />
+                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+                <ScalarProperty Name="Item" ColumnName="Item" />
+                <ScalarProperty Name="Material" ColumnName="Material" />
+                <ScalarProperty Name="MaterialNum" ColumnName="MaterialNum" />
+                <ScalarProperty Name="Requirement" ColumnName="Requirement" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+                <ScalarProperty Name="CrewFinishDate" ColumnName="CrewFinishDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_LogAssignedToUser">
+            <EntityTypeMapping TypeName="Johnson_UltBpmModel.T_LogAssignedToUser">
+              <MappingFragment StoreEntitySet="T_LogAssignedToUser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUserCode" ColumnName="CreateUserCode" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyUserCode" ColumnName="ModifyUserCode" />
+                <ScalarProperty Name="DelStatus" ColumnName="DelStatus" />
+                <ScalarProperty Name="ProcessName" ColumnName="ProcessName" />
+                <ScalarProperty Name="Incident" ColumnName="Incident" />
+                <ScalarProperty Name="StepLabel" ColumnName="StepLabel" />
+                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+                <ScalarProperty Name="OriginalAssignedToUser" ColumnName="OriginalAssignedToUser" />
+                <ScalarProperty Name="TargetAssignedToUser" ColumnName="TargetAssignedToUser" />
+                <ScalarProperty Name="AssignedType" ColumnName="AssignedType" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_LogMail">
+            <EntityTypeMapping TypeName="Johnson_UltBpmModel.T_LogMail">
+              <MappingFragment StoreEntitySet="T_LogMail">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUserCode" ColumnName="CreateUserCode" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyUserCode" ColumnName="ModifyUserCode" />
+                <ScalarProperty Name="DelStatus" ColumnName="DelStatus" />
+                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+                <ScalarProperty Name="StepLabel" ColumnName="StepLabel" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="MailTo" ColumnName="MailTo" />
+                <ScalarProperty Name="MailCc" ColumnName="MailCc" />
+                <ScalarProperty Name="MailBcc" ColumnName="MailBcc" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="QStartTime" ColumnName="QStartTime" />
+                <ScalarProperty Name="QEndTime" ColumnName="QEndTime" />
+                <ScalarProperty Name="MailSendStatus" ColumnName="MailSendStatus" />
+                <ScalarProperty Name="MailSendTime" ColumnName="MailSendTime" />
+                <ScalarProperty Name="LastReminderTime" ColumnName="LastReminderTime" />
+                <ScalarProperty Name="MailSendCycle" ColumnName="MailSendCycle" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_MailBodyTemplate">
+            <EntityTypeMapping TypeName="Johnson_UltBpmModel.T_MailBodyTemplate">
+              <MappingFragment StoreEntitySet="T_MailBodyTemplate">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUserCode" ColumnName="CreateUserCode" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyUserCode" ColumnName="ModifyUserCode" />
+                <ScalarProperty Name="DelStatus" ColumnName="DelStatus" />
+                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="MailTo" ColumnName="MailTo" />
+                <ScalarProperty Name="MailCc" ColumnName="MailCc" />
+                <ScalarProperty Name="MailBcc" ColumnName="MailBcc" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="StepLabel" ColumnName="StepLabel" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_MailProcessConfig">
+            <EntityTypeMapping TypeName="Johnson_UltBpmModel.T_MailProcessConfig">
+              <MappingFragment StoreEntitySet="T_MailProcessConfig">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ProcessName" ColumnName="ProcessName" />
+                <ScalarProperty Name="StepLabel" ColumnName="StepLabel" />
+                <ScalarProperty Name="IsMailOpinion" ColumnName="IsMailOpinion" />
+                <ScalarProperty Name="MailSendCycle" ColumnName="MailSendCycle" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_MailTasks">
+            <EntityTypeMapping TypeName="Johnson_UltBpmModel.T_MailTasks">
+              <MappingFragment StoreEntitySet="T_MailTasks">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUserCode" ColumnName="CreateUserCode" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyUserCode" ColumnName="ModifyUserCode" />
+                <ScalarProperty Name="DelStatus" ColumnName="DelStatus" />
+                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+                <ScalarProperty Name="StepLabel" ColumnName="StepLabel" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="MailTo" ColumnName="MailTo" />
+                <ScalarProperty Name="MailCc" ColumnName="MailCc" />
+                <ScalarProperty Name="MailBcc" ColumnName="MailBcc" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="MailSendStatus" ColumnName="MailSendStatus" />
+                <ScalarProperty Name="MailSendTime" ColumnName="MailSendTime" />
+                <ScalarProperty Name="LastReminderTime" ColumnName="LastReminderTime" />
+                <ScalarProperty Name="MailSendCycle" ColumnName="MailSendCycle" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_SQInfo">
+            <EntityTypeMapping TypeName="Johnson_UltBpmModel.T_SQInfo">
+              <MappingFragment StoreEntitySet="T_SQInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUserCode" ColumnName="CreateUserCode" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyUserCode" ColumnName="ModifyUserCode" />
+                <ScalarProperty Name="DelStatus" ColumnName="DelStatus" />
+                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="SQNo" ColumnName="SQNo" />
+                <ScalarProperty Name="SQFrom" ColumnName="SQFrom" />
+                <ScalarProperty Name="SaleOffice" ColumnName="SaleOffice" />
+                <ScalarProperty Name="SQUnFrom" ColumnName="SQUnFrom" />
+                <ScalarProperty Name="SQDate" ColumnName="SQDate" />
+                <ScalarProperty Name="ChillerType" ColumnName="ChillerType" />
+                <ScalarProperty Name="UnitModel" ColumnName="UnitModel" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="SQFor" ColumnName="SQFor" />
+                <ScalarProperty Name="AppType" ColumnName="AppType" />
+                <ScalarProperty Name="EnquiryFrom" ColumnName="EnquiryFrom" />
+                <ScalarProperty Name="QuoteBy" ColumnName="QuoteBy" />
+                <ScalarProperty Name="Undesigntime" ColumnName="Undesigntime" />
+                <ScalarProperty Name="Purchastingtime" ColumnName="Purchastingtime" />
+                <ScalarProperty Name="LeadtimeInfo" ColumnName="LeadtimeInfo" />
+                <ScalarProperty Name="Globalcode" ColumnName="Globalcode" />
+                <ScalarProperty Name="Versions" ColumnName="Versions" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_SQPrice">
+            <EntityTypeMapping TypeName="Johnson_UltBpmModel.T_SQPrice">
+              <MappingFragment StoreEntitySet="T_SQPrice">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUserCode" ColumnName="CreateUserCode" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyUserCode" ColumnName="ModifyUserCode" />
+                <ScalarProperty Name="DelStatus" ColumnName="DelStatus" />
+                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+                <ScalarProperty Name="PN" ColumnName="PN" />
+                <ScalarProperty Name="SQUnDescr" ColumnName="SQUnDescr" />
+                <ScalarProperty Name="SQSDescr" ColumnName="SQSDescr" />
+                <ScalarProperty Name="SQLevel1" ColumnName="SQLevel1" />
+                <ScalarProperty Name="SQLevel2" ColumnName="SQLevel2" />
+                <ScalarProperty Name="SQLevel3" ColumnName="SQLevel3" />
+                <ScalarProperty Name="SQLevel4" ColumnName="SQLevel4" />
+                <ScalarProperty Name="SepMaterial" ColumnName="SepMaterial" />
+                <ScalarProperty Name="StdMaterial" ColumnName="StdMaterial" />
+                <ScalarProperty Name="LOADD" ColumnName="LOADD" />
+                <ScalarProperty Name="EngFee" ColumnName="EngFee" />
+                <ScalarProperty Name="typea" ColumnName="typea" />
+                <ScalarProperty Name="typeb" ColumnName="typeb" />
+                <ScalarProperty Name="totleMLO" ColumnName="totleMLO" />
+                <ScalarProperty Name="TotalFiceBT" ColumnName="TotalFiceBT" />
+                <ScalarProperty Name="QTY" ColumnName="QTY" />
+                <ScalarProperty Name="FiceTp" ColumnName="FiceTp" />
+                <ScalarProperty Name="TotalFiceAT" ColumnName="TotalFiceAT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_TimeJY">
+            <EntityTypeMapping TypeName="Johnson_UltBpmModel.T_TimeJY">
+              <MappingFragment StoreEntitySet="T_TimeJY">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUserCode" ColumnName="CreateUserCode" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyUserCode" ColumnName="ModifyUserCode" />
+                <ScalarProperty Name="DelStatus" ColumnName="DelStatus" />
+                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+                <ScalarProperty Name="TypeA" ColumnName="TypeA" />
+                <ScalarProperty Name="TypeB" ColumnName="TypeB" />
+                <ScalarProperty Name="TypeC" ColumnName="TypeC" />
+                <ScalarProperty Name="Vendorid" ColumnName="Vendorid" />
+                <ScalarProperty Name="FzSQE" ColumnName="FzSQE" />
+                <ScalarProperty Name="SapNo" ColumnName="SapNo" />
+                <ScalarProperty Name="Jcjg" ColumnName="Jcjg" />
+                <ScalarProperty Name="Jcx" ColumnName="Jcx" />
+                <ScalarProperty Name="Jxpc" ColumnName="Jxpc" />
+                <ScalarProperty Name="SendTime" ColumnName="SendTime" />
+                <ScalarProperty Name="PlanRes" ColumnName="PlanRes" />
+                <ScalarProperty Name="SendComTime" ColumnName="SendComTime" />
+                <ScalarProperty Name="TestRes" ColumnName="TestRes" />
+                <ScalarProperty Name="EightBg" ColumnName="EightBg" />
+                <ScalarProperty Name="Result" ColumnName="Result" />
+                <ScalarProperty Name="ConfirmRes" ColumnName="ConfirmRes" />
+                <ScalarProperty Name="Factory" ColumnName="Factory" />
+                <ScalarProperty Name="Mails" ColumnName="Mails" />
+                <ScalarProperty Name="SendTimeRe" ColumnName="SendTimeRe" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="LsId" ColumnName="LsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_TimeJYCho">
+            <EntityTypeMapping TypeName="Johnson_UltBpmModel.T_TimeJYCho">
+              <MappingFragment StoreEntitySet="T_TimeJYCho">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TypeA" ColumnName="TypeA" />
+                <ScalarProperty Name="TypeB" ColumnName="TypeB" />
+                <ScalarProperty Name="TypeC" ColumnName="TypeC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_TimeJYLS">
+            <EntityTypeMapping TypeName="Johnson_UltBpmModel.T_TimeJYLS">
+              <MappingFragment StoreEntitySet="T_TimeJYLS">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUserCode" ColumnName="CreateUserCode" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyUserCode" ColumnName="ModifyUserCode" />
+                <ScalarProperty Name="DelStatus" ColumnName="DelStatus" />
+                <ScalarProperty Name="TypeA" ColumnName="TypeA" />
+                <ScalarProperty Name="TypeB" ColumnName="TypeB" />
+                <ScalarProperty Name="TypeC" ColumnName="TypeC" />
+                <ScalarProperty Name="Vendorid" ColumnName="Vendorid" />
+                <ScalarProperty Name="FzSQE" ColumnName="FzSQE" />
+                <ScalarProperty Name="SapNo" ColumnName="SapNo" />
+                <ScalarProperty Name="Jcjg" ColumnName="Jcjg" />
+                <ScalarProperty Name="Jcx" ColumnName="Jcx" />
+                <ScalarProperty Name="Jxpc" ColumnName="Jxpc" />
+                <ScalarProperty Name="SendTime" ColumnName="SendTime" />
+                <ScalarProperty Name="SendCount" ColumnName="SendCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Attachment">
+            <EntityTypeMapping TypeName="Johnson_UltBpmModel.T_Attachment">
+              <MappingFragment StoreEntitySet="T_Attachment">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUserCode" ColumnName="CreateUserCode" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyUserCode" ColumnName="ModifyUserCode" />
+                <ScalarProperty Name="DelStatus" ColumnName="DelStatus" />
+                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+                <ScalarProperty Name="StepLabel" ColumnName="StepLabel" />
+                <ScalarProperty Name="EdocFileId" ColumnName="EdocFileId" />
+                <ScalarProperty Name="EdocFolderId" ColumnName="EdocFolderId" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FileExtName" ColumnName="FileExtName" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+                <ScalarProperty Name="ExtendA" ColumnName="ExtendA" />
+                <ScalarProperty Name="ExtendB" ColumnName="ExtendB" />
+                <ScalarProperty Name="ExtendC" ColumnName="ExtendC" />
+                <ScalarProperty Name="ExtendD" ColumnName="ExtendD" />
+                <ScalarProperty Name="ExtendE" ColumnName="ExtendE" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Countersign">
+            <EntityTypeMapping TypeName="Johnson_UltBpmModel.T_Countersign">
+              <MappingFragment StoreEntitySet="T_Countersign">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUserCode" ColumnName="CreateUserCode" />
+                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+                <ScalarProperty Name="SignKey" ColumnName="SignKey" />
+                <ScalarProperty Name="FirstSignUserCount" ColumnName="FirstSignUserCount" />
+                <ScalarProperty Name="FirstSignOpinion" ColumnName="FirstSignOpinion" />
+                <ScalarProperty Name="SignUserCount" ColumnName="SignUserCount" />
+                <ScalarProperty Name="SignOpinion" ColumnName="SignOpinion" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Process">
+            <EntityTypeMapping TypeName="Johnson_UltBpmModel.T_Process">
+              <MappingFragment StoreEntitySet="T_Process">
+                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUserCode" ColumnName="CreateUserCode" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyUserCode" ColumnName="ModifyUserCode" />
+                <ScalarProperty Name="DelStatus" ColumnName="DelStatus" />
+                <ScalarProperty Name="ProcessName" ColumnName="ProcessName" />
+                <ScalarProperty Name="Incident" ColumnName="Incident" />
+                <ScalarProperty Name="Summary" ColumnName="Summary" />
+                <ScalarProperty Name="ProcessParentId" ColumnName="ProcessParentId" />
+                <ScalarProperty Name="ProcessStatus" ColumnName="ProcessStatus" />
+                <ScalarProperty Name="SaveTime" ColumnName="SaveTime" />
+                <ScalarProperty Name="SendTime" ColumnName="SendTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="AbortTime" ColumnName="AbortTime" />
+                <ScalarProperty Name="IncidentTime" ColumnName="IncidentTime" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_ProcessCategory">
+            <EntityTypeMapping TypeName="Johnson_UltBpmModel.T_ProcessCategory">
+              <MappingFragment StoreEntitySet="T_ProcessCategory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUserCode" ColumnName="CreateUserCode" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyUserCode" ColumnName="ModifyUserCode" />
+                <ScalarProperty Name="DelStatus" ColumnName="DelStatus" />
+                <ScalarProperty Name="ProcessName" ColumnName="ProcessName" />
+                <ScalarProperty Name="FormUrl" ColumnName="FormUrl" />
+                <ScalarProperty Name="FormType" ColumnName="FormType" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_ProcessDbTables">
+            <EntityTypeMapping TypeName="Johnson_UltBpmModel.T_ProcessDbTables">
+              <MappingFragment StoreEntitySet="T_ProcessDbTables">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUserCode" ColumnName="CreateUserCode" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyUserCode" ColumnName="ModifyUserCode" />
+                <ScalarProperty Name="DelStatus" ColumnName="DelStatus" />
+                <ScalarProperty Name="ProcessCategoryId" ColumnName="ProcessCategoryId" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="Condition" ColumnName="Condition" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_ProcessFavorites">
+            <EntityTypeMapping TypeName="Johnson_UltBpmModel.T_ProcessFavorites">
+              <MappingFragment StoreEntitySet="T_ProcessFavorites">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUserCode" ColumnName="CreateUserCode" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyUserCode" ColumnName="ModifyUserCode" />
+                <ScalarProperty Name="DelStatus" ColumnName="DelStatus" />
+                <ScalarProperty Name="ProcessName" ColumnName="ProcessName" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_StepUsers">
+            <EntityTypeMapping TypeName="Johnson_UltBpmModel.T_StepUsers">
+              <MappingFragment StoreEntitySet="T_StepUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUserCode" ColumnName="CreateUserCode" />
+                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+                <ScalarProperty Name="StepLabel" ColumnName="StepLabel" />
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_TaskApproval">
+            <EntityTypeMapping TypeName="Johnson_UltBpmModel.T_TaskApproval">
+              <MappingFragment StoreEntitySet="T_TaskApproval">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUserCode" ColumnName="CreateUserCode" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyUserCode" ColumnName="ModifyUserCode" />
+                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+                <ScalarProperty Name="SignKey" ColumnName="SignKey" />
+                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+                <ScalarProperty Name="StepLabel" ColumnName="StepLabel" />
+                <ScalarProperty Name="Opinion" ColumnName="Opinion" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="ApprovalStatus" ColumnName="ApprovalStatus" />
+                <ScalarProperty Name="ResultSignUserCount" ColumnName="ResultSignUserCount" />
+                <ScalarProperty Name="ResultSignOpinion" ColumnName="ResultSignOpinion" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="SignedPhotograph" ColumnName="SignedPhotograph" />
+                <ScalarProperty Name="IsQueueOperation" ColumnName="IsQueueOperation" />
+                <ScalarProperty Name="SaveTime" ColumnName="SaveTime" />
+                <ScalarProperty Name="SendTime" ColumnName="SendTime" />
+                <ScalarProperty Name="QStartTime" ColumnName="QStartTime" />
+                <ScalarProperty Name="QEndTime" ColumnName="QEndTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="FailedTime" ColumnName="FailedTime" />
+                <ScalarProperty Name="ProcessIsEnd" ColumnName="ProcessIsEnd" />
+                <ScalarProperty Name="IsCurrentBatch" ColumnName="IsCurrentBatch" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Travel">
+            <EntityTypeMapping TypeName="Johnson_UltBpmModel.T_Travel">
+              <MappingFragment StoreEntitySet="T_Travel">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUserCode" ColumnName="CreateUserCode" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyUserCode" ColumnName="ModifyUserCode" />
+                <ScalarProperty Name="DelStatus" ColumnName="DelStatus" />
+                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+                <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
+                <ScalarProperty Name="ApplicantDeptId" ColumnName="ApplicantDeptId" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="BusinessType" ColumnName="BusinessType" />
+                <ScalarProperty Name="TravelStartDate" ColumnName="TravelStartDate" />
+                <ScalarProperty Name="TravelEndDate" ColumnName="TravelEndDate" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Test1" ColumnName="Test1" />
+                <ScalarProperty Name="Test2" ColumnName="Test2" />
+                <ScalarProperty Name="IsActiveSubProcess" ColumnName="IsActiveSubProcess" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="TravelRemark" ColumnName="TravelRemark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_UltimusVariables">
+            <EntityTypeMapping TypeName="Johnson_UltBpmModel.T_UltimusVariables">
+              <MappingFragment StoreEntitySet="T_UltimusVariables">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUserCode" ColumnName="CreateUserCode" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyUserCode" ColumnName="ModifyUserCode" />
+                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+                <ScalarProperty Name="VariableName" ColumnName="VariableName" />
+                <ScalarProperty Name="VariableValue" ColumnName="VariableValue" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

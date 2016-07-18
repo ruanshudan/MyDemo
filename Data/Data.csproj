@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6EBC1975-EDF4-4452-9D50-57393FF0679C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Data</RootNamespace>
+    <AssemblyName>Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data.EntityModule\Blog.cs" />
+    <Compile Include="Data.EntityModule\BlogPost.cs" />
+    <Compile Include="Data.EntityModule\BlogPostComment.cs" />
+    <Compile Include="Data.EntityModule\JCI_UltBpmModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JCI_UltBpmModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data.EntityModule\JCI_UltBpmModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JCI_UltBpmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data.EntityModule\JCI_UltBpmModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JCI_UltBpmModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data.EntityModule\T_AssignedToUserFuture.cs">
+      <DependentUpon>JCI_UltBpmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data.EntityModule\T_Attachment.cs">
+      <DependentUpon>JCI_UltBpmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data.EntityModule\T_Countersign.cs">
+      <DependentUpon>JCI_UltBpmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data.EntityModule\T_Dic_Parameter.cs">
+      <DependentUpon>JCI_UltBpmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data.EntityModule\T_GZOrderProcessConfig.cs">
+      <DependentUpon>JCI_UltBpmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data.EntityModule\T_GZOrderRelease.cs">
+      <DependentUpon>JCI_UltBpmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data.EntityModule\T_GZOrderReleaseAttachment.cs">
+      <DependentUpon>JCI_UltBpmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data.EntityModule\T_GZOrderReleaseProduct.cs">
+      <DependentUpon>JCI_UltBpmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data.EntityModule\T_GZOrderReview.cs">
+      <DependentUpon>JCI_UltBpmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data.EntityModule\T_GZOrderReviewProduct.cs">
+      <DependentUpon>JCI_UltBpmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data.EntityModule\T_LogAssignedToUser.cs">
+      <DependentUpon>JCI_UltBpmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data.EntityModule\T_LogMail.cs">
+      <DependentUpon>JCI_UltBpmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data.EntityModule\T_MailBodyTemplate.cs">
+      <DependentUpon>JCI_UltBpmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data.EntityModule\T_MailProcessConfig.cs">
+      <DependentUpon>JCI_UltBpmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data.EntityModule\T_MailTasks.cs">
+      <DependentUpon>JCI_UltBpmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data.EntityModule\T_Process.cs">
+      <DependentUpon>JCI_UltBpmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data.EntityModule\T_ProcessCategory.cs">
+      <DependentUpon>JCI_UltBpmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data.EntityModule\T_ProcessDbTables.cs">
+      <DependentUpon>JCI_UltBpmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data.EntityModule\T_ProcessFavorites.cs">
+      <DependentUpon>JCI_UltBpmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data.EntityModule\T_SQInfo.cs">
+      <DependentUpon>JCI_UltBpmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data.EntityModule\T_SQPrice.cs">
+      <DependentUpon>JCI_UltBpmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data.EntityModule\T_StepUsers.cs">
+      <DependentUpon>JCI_UltBpmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data.EntityModule\T_TaskApproval.cs">
+      <DependentUpon>JCI_UltBpmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data.EntityModule\T_TimeJY.cs">
+      <DependentUpon>JCI_UltBpmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data.EntityModule\T_TimeJYCho.cs">
+      <DependentUpon>JCI_UltBpmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data.EntityModule\T_TimeJYLS.cs">
+      <DependentUpon>JCI_UltBpmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data.EntityModule\T_Travel.cs">
+      <DependentUpon>JCI_UltBpmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data.EntityModule\T_UltimusVariables.cs">
+      <DependentUpon>JCI_UltBpmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data.EntityModule\User.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data.Cache\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Data.EntityModule\JCI_UltBpmModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>JCI_UltBpmModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="Data.EntityModule\JCI_UltBpmModel.edmx.diagram">
+      <DependentUpon>JCI_UltBpmModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data.EntityModule\JCI_UltBpmModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>JCI_UltBpmModel.edmx</DependentUpon>
+      <LastGenOutput>JCI_UltBpmModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data.EntityModule\JCI_UltBpmModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>JCI_UltBpmModel.edmx</DependentUpon>
+      <LastGenOutput>JCI_UltBpmModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
